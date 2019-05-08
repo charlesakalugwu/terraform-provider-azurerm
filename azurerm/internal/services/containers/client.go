@@ -9,6 +9,7 @@ import (
 
 type Client struct {
 	KubernetesClustersClient *containerservice.ManagedClustersClient
+	OpenshiftClustersClient  *containerservice.OpenShiftManagedClustersClient
 	GroupsClient             *containerinstance.ContainerGroupsClient
 	RegistriesClient         *containerregistry.RegistriesClient
 	WebhooksClient           *containerregistry.WebhooksClient
@@ -37,8 +38,13 @@ func BuildClient(o *common.ClientOptions) *Client {
 	KubernetesClustersClient := containerservice.NewManagedClustersClientWithBaseURI(o.ResourceManagerEndpoint, o.SubscriptionId)
 	o.ConfigureClient(&KubernetesClustersClient.Client, o.ResourceManagerAuthorizer)
 
+	// Azure Red Hat OpenShift (ARO)
+	OpenshiftClustersClient := containerservice.NewOpenShiftManagedClustersClientWithBaseURI(o.ResourceManagerEndpoint, o.SubscriptionId)
+	o.ConfigureClient(&OpenshiftClustersClient.Client, o.ResourceManagerAuthorizer)
+
 	return &Client{
 		KubernetesClustersClient: &KubernetesClustersClient,
+		OpenshiftClustersClient:  &OpenshiftClustersClient,
 		GroupsClient:             &GroupsClient,
 		RegistriesClient:         &RegistriesClient,
 		WebhooksClient:           &WebhooksClient,

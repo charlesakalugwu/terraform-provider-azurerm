@@ -360,6 +360,7 @@ func Provider() terraform.ResourceProvider {
 		"azurerm_notification_hub_authorization_rule":                                    resourceArmNotificationHubAuthorizationRule(),
 		"azurerm_notification_hub_namespace":                                             resourceArmNotificationHubNamespace(),
 		"azurerm_notification_hub":                                                       resourceArmNotificationHub(),
+		"azurerm_openshift_cluster":                                                      resourceArmOpenshiftCluster(),
 		"azurerm_packet_capture":                                                         resourceArmPacketCapture(),
 		"azurerm_policy_assignment":                                                      resourceArmPolicyAssignment(),
 		"azurerm_policy_definition":                                                      resourceArmPolicyDefinition(),
